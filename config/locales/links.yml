@@ -1,0 +1,5 @@
+pt-BR: 
+  links:
+    new: Novo %{model}
+    delete: Excluir
+    edit: Editar
