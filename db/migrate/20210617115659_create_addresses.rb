@@ -5,8 +5,9 @@ class CreateAddresses < ActiveRecord::Migration[5.2]
       t.string :public_place
       t.string :complement
       t.string :district
-      t.references :citizen, foreign_key: true
-      t.references :city, foreign_key: true
+      t.string :uf
+      t.string :city
+      t.references :proponent, foreign_key: true
 
       t.timestamps
     end
