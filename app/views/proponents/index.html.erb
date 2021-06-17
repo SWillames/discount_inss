@@ -5,13 +5,13 @@
 <table>
   <thead>
     <tr>
-      <th>Full name</th>
-      <th>Cpf</th>
-      <th>Birth date</th>
-      <th>Personal phone</th>
-      <th>Reference phone</th>
-      <th>Salary</th>
-      <th>Discount inss</th>
+      <th><%= @proponents.human_attribute_name('full_name') %></th>
+      <th><%= @proponents.human_attribute_name('cpf') %></th>
+      <th><%= @proponents.human_attribute_name('birth_date') %></th>
+      <th><%= @proponents.human_attribute_name('personal_phone') %></th>
+      <th><%= @proponents.human_attribute_name('reference_phone') %></th>
+      <th><%= @proponents.human_attribute_name('salary') %></th>
+      <th><%= @proponents.human_attribute_name('discount_inss') %></th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -36,4 +36,5 @@
 
 <br>
 
-<%= link_to 'New Proponent', new_proponent_path %>
+<%= link_to t('links.new', model: @proponents.model_name.human), new_proponent_path %>
+<%= link_to 'Sair', destroy_employee_session_path, class:"nav-link btn btn-danger", method: :delete %>
