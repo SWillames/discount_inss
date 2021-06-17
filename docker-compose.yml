@@ -1,0 +1,35 @@
+version: 3.8
+
+services:
+  postgres:
+    image: 'postgres:12.3'
+    volumes:
+      - 'postgres:/var/lib/postgresql/data'
+    environment:
+      - POSTGRES_USERNAME=postgres
+      - POSTGRES_PASSWORD=postgres
+
+  app:
+    depends_on:
+      - postgres
+    build: .
+    command: bash start
+    ports:
+      - '3000:3000'
+    volumes:
+      - '.:/discount_inss'
+      - 'box:/box'
+    environment:
+      - BUNDLE_PATH=/box
+      - DB_HOST=postgres
+      - DB_USER=postgres
+      - DB_PASS=postgres
+
+  box:
+    image: busybox
+    volumes:
+      - box:/box
+
+volumes:
+  postgres:
+  box:
