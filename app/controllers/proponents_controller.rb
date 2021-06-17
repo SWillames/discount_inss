@@ -53,7 +53,7 @@ class ProponentsController < ApplicationController
   def proponent_params
     params.require(:proponent)
           .permit(:full_name, :cpf, :birth_date, :personal_phone, 
-                  :reference_phone, :salary, :discount_inss, 
+                  :reference_phone, :salary, :discount_inss, :email,
                   address_attributes: [:id, :zip_code, :public_place, :complement, :district, :city, :uf])
   end
 end
