@@ -1,69 +1,57 @@
 class ProponentsController < ApplicationController
+  before_action :authenticate_employee!
   before_action :set_proponent, only: %i[ show edit update destroy ]
 
-  # GET /proponents or /proponents.json
   def index
     @proponents = Proponent.all
   end
 
-  # GET /proponents/1 or /proponents/1.json
   def show
   end
 
-  # GET /proponents/new
   def new
     @proponent = Proponent.new
+    @proponent.build_address
   end
 
-  # GET /proponents/1/edit
   def edit
   end
 
-  # POST /proponents or /proponents.json
   def create
     @proponent = Proponent.new(proponent_params)
-
-    respond_to do |format|
-      if @proponent.save
-        format.html { redirect_to @proponent, notice: "Proponent was successfully created." }
-        format.json { render :show, status: :created, location: @proponent }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @proponent.errors, status: :unprocessable_entity }
-      end
+    if @proponent.save
+      redirect_to @proponent, notice: "Proponent was successfully created." 
+    else
+      render :new, status: :unprocessable_entity 
     end
   end
 
-  # PATCH/PUT /proponents/1 or /proponents/1.json
   def update
-    respond_to do |format|
-      if @proponent.update(proponent_params)
-        format.html { redirect_to @proponent, notice: "Proponent was successfully updated." }
-        format.json { render :show, status: :ok, location: @proponent }
-      else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @proponent.errors, status: :unprocessable_entity }
-      end
+    if @proponent.update(proponent_params)
+      redirect_to @proponent, notice: "Proponent was successfully updated." 
+    else
+      render :edit, status: :unprocessable_entity
     end
   end
 
-  # DELETE /proponents/1 or /proponents/1.json
   def destroy
     @proponent.destroy
-    respond_to do |format|
-      format.html { redirect_to proponents_url, notice: "Proponent was successfully destroyed." }
-      format.json { head :no_content }
-    end
+    redirect_to proponents_url, notice: "Proponent was successfully destroyed." 
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_proponent
-      @proponent = Proponent.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def proponent_params
-      params.require(:proponent).permit(:full_name, :cpf, :birth_date, :personal_phone, :reference_phone, :salary, :discount_inss)
-    end
+  def set_proponent
+    @proponent = Proponent.find(params[:id])
+  end
+
+  
+
+  # Only allow a list of trusted parameters through.
+  def proponent_params
+    params.require(:proponent)
+          .permit(:full_name, :cpf, :birth_date, :personal_phone, 
+                  :reference_phone, :salary, :discount_inss, :email,
+                  address_attributes: [:id, :zip_code, :public_place, :complement, :district, :city, :uf])
+  end
 end

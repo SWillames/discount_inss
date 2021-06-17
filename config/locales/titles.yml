@@ -1,0 +1,5 @@
+pt-BR:
+  titles:
+    listing: Listando %{model}
+    new: Novo %{model}
+    edit: Editando %{model}

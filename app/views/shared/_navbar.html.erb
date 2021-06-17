@@ -1,0 +1,18 @@
+<nav class="navbar navbar-light bg-dark">
+  <div class="container-fluid">
+    <%= link_to root_path do %>
+          <%= image_tag "logo", size: "75x75", class: "img-thumbnail"%>
+        <% end %>
+    <form class="d-flex">
+      <% if !employee_signed_in? %>
+        <%= link_to new_employee_session_path, class: "btn btn-success"  do %>
+          <i class="fa fa-sign-in"></i>
+        <% end %>
+      <% else %>
+        <%= link_to destroy_employee_session_path, class:"btn btn-danger", method: :delete do %>
+          <i class="fa fa-sign-out"></i>
+        <% end %>
+      <% end %>
+    </form>
+  </div>
+</nav>

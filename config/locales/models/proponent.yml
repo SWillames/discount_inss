@@ -5,11 +5,13 @@ pt-BR:
         one: Proponente
         other: Proponentes
     attributes:
-      employee:
+      proponent:
         full_name: Nome Completo
         cpf: cpf
         email: E-mail
         birth_date: Data de nascimento
+        personal_phone: Celular
+        reference_phone: Telefone 2
         salary: salario
         discount_inss: Contribuição
         password: Senha
