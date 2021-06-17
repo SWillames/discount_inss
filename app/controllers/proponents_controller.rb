@@ -34,8 +34,6 @@ class ProponentsController < ApplicationController
     end
   end
 
- 
-  # DELETE /proponents/1 or /proponents/1.json
   def destroy
     @proponent.destroy
     redirect_to proponents_url, notice: "Proponent was successfully destroyed." 
