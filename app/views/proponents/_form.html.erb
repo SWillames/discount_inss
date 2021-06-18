@@ -11,80 +11,102 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :full_name %>
-    <%= form.text_field :full_name %>
+  <div class="row g-3">
+    <div class="form-label-group col-md-6">
+      <%= form.text_field :full_name, autofocus: true, class: "form-control", placeholder: "  " %>
+      <%= form.label :full_name %>
+    </div>
+
+    <div class="form-label-group col-md-6">
+      <%= form.text_field :cpf, autofocus: true, class: "form-control", placeholder: "  "  %>
+      <%= form.label :cpf %>
+    </div>
   </div>
 
-  <div class="field">
-    <%= form.label :cpf %>
-    <%= form.text_field :cpf %>
-  </div>
-  <div class="field">
+  <div class="row g-3">
+    <div class="form-label-group col-md-6">
+      <%= form.label :birth_date %>
+      <%= form.date_field :birth_date, autofocus: true, class: "form-control", placeholder: "  "   %>
+    </div>
 
-    <%= form.label :birth_date %>
-    <%= form.date_field :birth_date %>
-  </div>
-
-  <div>
-    <%= form.label :email %>
-    <%= form.email_field :email %>
-  </div>
-  <div class="field">
-    <%= form.label :personal_phone %>
-    <%= form.text_field :personal_phone %>
+    <div class="form-label-group col-md-6">
+      <%= form.email_field :email, autofocus: true, class: "form-control", placeholder: "  "  %>
+      <%= form.label :email %>
+    </div>
   </div>
 
-  <div class="field">
-    <%= form.label :reference_phone %>
-    <%= form.text_field :reference_phone %>
+  <div class="row g-3">
+    <div class="form-label-group col-md-6">
+      <%= form.text_field :personal_phone, autofocus: true, class: "form-control", placeholder: "  "  %>
+      <%= form.label :personal_phone %>
+    </div>
+
+    <div class="form-label-group col-md-6">
+      <%= form.text_field :reference_phone, autofocus: true, class: "form-control", placeholder: "  "  %>
+      <%= form.label :reference_phone %>
+    </div>
   </div>
 
-  <div class="field">
-    <%= form.label :salary %>
-    <%= form.text_field :salary %>
+  <div class="row g-3">
+    <div class="form-label-group col-md-6">
+      <%= form.text_field :salary, autofocus: true, class: "form-control", placeholder: "  "  %>
+      <%= form.label :salary %>
+    </div>
+
+    <div class="form-label-group col-md-6">
+      <%= form.text_field :contribution, autofocus: true, class: "form-control", placeholder: "  ", readonly: true  %>
+      <%= form.label :contribution %>
+    </div>
   </div>
 
-  <div class="field">
-    <%= form.label :discount_inss %>
-    <%= form.text_field :discount_inss %>
-  </div>
-
-      <h4>Endereço</h4>
+    <h4>Endereço</h4>
     <%= form.fields_for :address do |address_form| %>
-      <div class="field">
-        <%= address_form.label :zip_code %>
-        <%= address_form.text_field :zip_code, autofocus: true, autocomplete: "name", class: "form-control", placeholder: "  ", data: {autocomplete_zipcode_provider: :zipcode}%>
-      </div>
-
-      <div class="field" >
-        <%= address_form.label :public_place %>
-        <%= address_form.text_field :public_place, autofocus: true, autocomplete: "name", class: "form-control", placeholder: "  ", data: {autocomplete_zipcode_provider: :public_place} %>
-      </div>
-
-      <div class="field">
-        <%= address_form.label :complement %>
-        <%= address_form.text_field :complement, autofocus: true, autocomplete: "name", class: "form-control", placeholder: "   " %>
-      </div>
-
-      <div class="field" >
-        <%= address_form.label :district %>
-        <%= address_form.text_field :district, autofocus: true, autocomplete: "name", class: "form-control", placeholder: "   ", data: {autocomplete_zipcode_provider: :neighborhood} %>
-      </div>
-      
-
-      <div class="field">
-        <%= address_form.label :city %>
-        <%= address_form.text_field :city, autofocus: true, autocomplete: "name", class: "form-control", placeholder: "   ", data: {autocomplete_zipcode_provider: :city} %>
-      </div>
-
-        <div class="field" >
-          <%= address_form.label :uf %>
-          <%= address_form.text_field :uf, autofocus: true, autocomplete: "name", class: "form-control", placeholder: "   ", data: {autocomplete_zipcode_provider: :state} %>
+      <div class="row g-3">
+        <div class="form-label-group col-md-6">
+          <%= address_form.text_field :zip_code, autofocus: true, autocomplete: "name", class: "form-control", placeholder: "  ", data: {autocomplete_zipcode_provider: :zipcode}%>
+          <%= address_form.label :zip_code %>
         </div>
+
+        <div class="form-label-group col-md-6" >
+          <%= address_form.text_field :public_place, autofocus: true, autocomplete: "name", class: "form-control", placeholder: "  ", data: {autocomplete_zipcode_provider: :public_place} %>
+          <%= address_form.label :public_place %>
+        </div>
+      </div>
+
+      <div class="row g-3">
+        <div class="form-label-group col-md-6">
+          <%= address_form.text_field :complement, autofocus: true, autocomplete: "name", class: "form-control", placeholder: "   " %>
+          <%= address_form.label :complement %>
+        </div>
+
+        <div class="form-label-group col-md-6" >
+          <%= address_form.text_field :district, autofocus: true, autocomplete: "name", class: "form-control", placeholder: "   ", data: {autocomplete_zipcode_provider: :neighborhood} %>
+          <%= address_form.label :district %>
+        </div>
+      </div>      
+
+      <div class="row g-3">
+        <div class="form-label-group col-md-6">
+          <%= address_form.text_field :city, autofocus: true, autocomplete: "name", class: "form-control", placeholder: "   ", data: {autocomplete_zipcode_provider: :city} %>
+          <%= address_form.label :city %>
+        </div>
+
+          <div class="form-label-group col-md-6" >
+            <%= address_form.text_field :uf, autofocus: true, autocomplete: "name", class: "form-control", placeholder: "   ", data: {autocomplete_zipcode_provider: :state} %>
+            <%= address_form.label :uf %>
+          </div>
+      </div>
     <% end %>
 
-  <div class="actions">
-    <%= form.submit %>
+    <div class="row g-3">
+  <div class="col-sm-7">
+    <%= render 'proponents/buttons/back' %>
   </div>
+
+  <div class="col-sm">  </div>
+
+  <div class="col-sm justify-content-md-end">
+    <%= render 'proponents/buttons/save' %>
+  </div>
+</div>
 <% end %>

@@ -1,40 +1,73 @@
-<p id="notice"><%= notice %></p>
+<div class="container">
 
-<h1>Proponents</h1>
+  <h1><%= t('titles.listing', model: @proponents.model_name.human(count: 2)) %></h1>
 
-<table>
-  <thead>
-    <tr>
-      <th><%= @proponents.human_attribute_name('full_name') %></th>
-      <th><%= @proponents.human_attribute_name('cpf') %></th>
-      <th><%= @proponents.human_attribute_name('birth_date') %></th>
-      <th><%= @proponents.human_attribute_name('personal_phone') %></th>
-      <th><%= @proponents.human_attribute_name('reference_phone') %></th>
-      <th><%= @proponents.human_attribute_name('salary') %></th>
-      <th><%= @proponents.human_attribute_name('discount_inss') %></th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+    <div class="row g-3">
+      <div class="col-sm-7 text-right">
+        <%= link_to new_proponent_path, class:"btn btn-success btn-circle" do %>
+          <i class="fa fa-plus"></i>
+        <% end %>
+      </div>
+      <div class="col-sm"></div>
+      <div class="col-sm">
+        <%= search_form_for @search do |f| %>
+            <div class="input-group mb-3">
+              <%= f.search_field :full_name_cont, autofocus: true, class: "form-control", placeholder: "Pesquisa Nome.." %>
+              <button class="btn btn-primary" type="submit" name="action" >
+                <i class="fa fa-search"></i>
+              </button>
+            </div>
+        <% end %>
+      </div>
+    </div>
 
-  <tbody>
-    <% @proponents.each do |proponent| %>
-      <tr>
-        <td><%= proponent.full_name %></td>
-        <td><%= proponent.cpf %></td>
-        <td><%= proponent.birth_date %></td>
-        <td><%= proponent.personal_phone %></td>
-        <td><%= proponent.reference_phone %></td>
-        <td><%= proponent.salary %></td>
-        <td><%= proponent.discount_inss %></td>
-        <td><%= link_to 'Show', proponent %></td>
-        <td><%= link_to 'Edit', edit_proponent_path(proponent) %></td>
-        <td><%= link_to 'Destroy', proponent, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+  <div class="table-responsive">
+      <table class="table table-striped table-bordered text-center" >
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col"><%= @proponents.human_attribute_name('full_name') %></th>
+            <th scope="col"><%= @proponents.human_attribute_name('cpf') %></th>
+            <th scope="col"><%= @proponents.human_attribute_name('birth_date') %></th>
+            <th scope="col"><%= @proponents.human_attribute_name('personal_phone') %></th>
+            <th scope="col"><%= @proponents.human_attribute_name('reference_phone') %></th>
+            <th scope="col"><%= @proponents.human_attribute_name('salary') %></th>
+            <th scope="col"><%= @proponents.human_attribute_name('discount_inss') %></th>
+            <th colspan="3"></th>
+          </tr>
+        </thead>
 
-<br>
+    <tbody>
+      <% @proponents.each do |proponent| %>
+        <tr>
+          <td><%= proponent.full_name %></td>
+          <td><%= proponent.cpf %></td>
+          <td><%= l proponent.birth_date %></td>
+          <td><%= proponent.personal_phone %></td>
+          <td><%= proponent.reference_phone %></td>
+          <td><%= proponent.salary %></td>
+          <td><%= proponent.contribution %></td>
+          <td> 
+              <%= link_to proponent, class:"btn btn-link btn-circle" do %>
+                <i class="fa fa-eye"></i>
+              <% end %>
+            </td>
+            <td>
+              <%= link_to edit_proponent_path(proponent), class:"btn btn-link btn-circle" do %>
+                <i class="fa fa-edit"></i>
+              <% end %>
+            </td>
+            <td>
+              <%= link_to proponent, class:"btn btn-circle btn-danger", method: :delete, data: { confirm: "#{t 'confirm'}" } do %>
+                <i class="fa fa-fw fa-trash"></i>
+              <% end %> 
+            </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <%== pagy_bootstrap_nav(@pagy) %>
 
-<%= link_to t('links.new', model: @proponents.model_name.human), new_proponent_path %>
-<%= link_to 'Sair', destroy_employee_session_path, class:"nav-link btn btn-danger", method: :delete %>
+  <br>
+
+  <%#= link_to t('links.new', model: @proponents.model_name.human), new_proponent_path %>
+</div>

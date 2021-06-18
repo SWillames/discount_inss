@@ -2,5 +2,13 @@
 
 <%= render 'form', proponent: @proponent %>
 
-<%= link_to 'Show', @proponent %> |
-<%= link_to 'Back', proponents_path %>
+<div class="row g-3">
+  <div class="col-sm-6">  </div>
+
+  <div class="col-sm"> 
+    <%= render 'proponents/buttons/show' %>
+  </div>
+
+  <div class="col-sm justify-content-md-end">
+  </div>
+</div>
