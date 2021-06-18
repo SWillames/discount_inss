@@ -1,39 +1,94 @@
-<p id="notice"><%= notice %></p>
+<div class="container">
+  
+    <div>
+      <strong>
+        <h3> <%= @proponent.full_name %> </h3>
+      </strong>
+    </div>
 
-<p>
-  <strong>Full name:</strong>
-  <%= @proponent.full_name %>
-</p>
+    <div>
+      <h5>Detalhes</h5>
 
-<p>
-  <strong>Cpf:</strong>
-  <%= @proponent.cpf %>
-</p>
+      <div class="row g-3">
+        <div class="form-label-group col-md-3">
+          <strong><%= label_tag nil, @proponent.class.human_attribute_name(:cpf) %>:</strong>
+          <%= @proponent.cpf %>
+        </div>
 
-<p>
-  <strong>Birth date:</strong>
-  <%= @proponent.birth_date %>
-</p>
+        <div class="form-label-group col-md-3">
+          <strong><%= label_tag nil, @proponent.class.human_attribute_name(:birth_date) %></strong>
+          <%= @proponent.birth_date %>
+        </div>
 
-<p>
-  <strong>Personal phone:</strong>
-  <%= @proponent.personal_phone %>
-</p>
+        <div class="form-label-group col-md-3">
+          <strong><%= label_tag nil, @proponent.class.human_attribute_name(:personal_phone) %></strong>
+          <%= @proponent.personal_phone %>
+        </div>
+      </div>
 
-<p>
-  <strong>Reference phone:</strong>
-  <%= @proponent.reference_phone %>
-</p>
+      <div class="row g-3">
+        <div class="form-label-group col-md-3">
+          <strong><%= label_tag nil, @proponent.class.human_attribute_name(:reference_phone) %></strong>
+          <%= @proponent.reference_phone %>
+        </div>
 
-<p>
-  <strong>Salary:</strong>
-  <%= @proponent.salary %>
-</p>
+        <div class="form-label-group col-md-3">
+          <strong><%= label_tag nil, @proponent.class.human_attribute_name(:salary) %></strong>
+          <%= @proponent.salary %>
+        </div>
 
-<p>
-  <strong>Discount inss:</strong>
-  <%= @proponent.discount_inss %>
-</p>
+        <div class="form-label-group col-md-3">
+          <strong><%= label_tag nil, @proponent.class.human_attribute_name(:contribution) %></strong>
+          <%= @proponent.contribution %>
+        </div>
+      </div>
 
-<%= link_to 'Edit', edit_proponent_path(@proponent) %> |
-<%= link_to 'Back', proponents_path %>
+      <div class="row g-3">
+        <div class="form-label-group col-md-3">
+          <strong><%= label_tag nil, @proponent.address.class.human_attribute_name(:zip_code) %></strong>
+          <%= @proponent.address.zip_code %>
+        </div>
+
+        <div class="form-label-group col-md-3">
+          <strong><%= label_tag nil, @proponent.address.class.human_attribute_name(:public_place) %></strong>
+          <%= @proponent.address.public_place %>
+        </div>
+
+        <div class="form-label-group col-md-3">
+          <strong><%= label_tag nil, @proponent.address.class.human_attribute_name(:complement) %></strong>
+          <%= @proponent.address.complement %>
+        </div>
+      </div>
+
+      <div class="row g-3">
+        <div class="form-label-group col-md-6">
+          <strong><%= label_tag nil, @proponent.address.class.human_attribute_name(:district) %></strong>
+          <%= @proponent.address.district %>
+        </div>
+
+        <div class="form-label-group col-md-6">
+          <strong><%= label_tag nil, @proponent.address.class.human_attribute_name(:city) %></strong>
+          <%= @proponent.address.city %>
+        </div>
+
+        <div class="form-label-group col-md-3">
+          <strong><%= label_tag nil, @proponent.address.class.human_attribute_name(:uf) %></strong>
+          <%= @proponent.address.uf %>
+        </div>
+      </div>
+
+      <div class="row g-3">
+        <div class="col-sm-7">
+          <%= render 'proponents/buttons/back' %>
+        </div>
+
+        <div class="col-sm">  </div>
+
+        <div class="col-sm justify-content-md-end">
+          <%= render 'proponents/buttons/edit' %>
+        </div>
+      </div>
+
+    </div>
+
+</div>

@@ -7,7 +7,7 @@ pt-BR:
     attributes:
       address:
         zip_code: CEP
-        public_place: logradouro
+        public_place: Logradouro
         district: Bairro
         complement: Complemento
         city: Cidade

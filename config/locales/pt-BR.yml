@@ -1,4 +1,4 @@
-'pt-BR':
+pt-BR:
   activerecord:
     errors:
       messages:
@@ -223,3 +223,4 @@
       long: "%d de %B de %Y, %H:%M"
       short: "%d de %B, %H:%M"
     pm: ''
+  confirm: Você tem certeza?

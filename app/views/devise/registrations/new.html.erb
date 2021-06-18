@@ -1,34 +1,40 @@
-<h2>Sign up</h2>
+<h5 class="card-title text-center">Junte-se a nos</h5>
+
+<div class="container text-center">
+  <%= image_tag "logo", size: "45x45", class: "img-thumbnail"%>
+</div>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
 
-  <div class="field">
-    <%= f.label :name %><br />
-    <%= f.text_field :name, autofocus: true, autocomplete: "name" %>
+  <div class="form-label-group">
+    <%= f.text_field :name, autofocus: true, autocomplete: "name", class: "form-control", placeholder: "  " %>
+    <%= f.label :name %>
   </div>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+  <div class="form-label-group">
+    <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control", placeholder: '  '%>
+    <%= f.label :email %>
   </div>
 
-  <div class="field">
-    <%= f.label :password %>
+
+  <div class="form-label-group">
+
     <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
+    <% end %>
+    <%= f.password_field :password, autocomplete: "new-password", class: "form-control", placeholder: '  ' %>
+    <%= f.label :password %>
+    <em>(<%= "Precisamos de no minimo #{@minimum_password_length} caracteres" %> )</em>
   </div>
 
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+  <div class="form-label-group">
+    <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control", placeholder: '  ' %>
+    <%= f.label :password_confirmation %>
   </div>
+
 
   <div class="actions">
-    <%= f.submit "Sign up" %>
+    <%= f.submit t('link.Sign up'), class: "btn btn-lg btn-primary btn-block text-uppercase" %>
   </div>
 <% end %>
-
-<%= render "devise/shared/links" %>
+Ja possui sua conta? Acesse <%= render "devise/shared/links" %>

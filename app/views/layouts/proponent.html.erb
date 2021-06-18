@@ -17,23 +17,18 @@
   </header>
 
   <main>
-    <div class="container-fluid">
-      <div class="container">
-        <div class="row">
-          <div class="col-sm-9 col-md-7 col-lg-6 mx-auto">
-            <em class="alert-primary"><%= notice %></em>
-            <em class="alert-danger"><%= alert %></em>
-            <div class="card card-signin my-5">
+      <div class="container-fluid">
+        <div class="container">
+          <div class="row">
               <div class="card-body">
-
+                <em class="alert-primary"><%= notice %></em>
+                <em class="alert-danger"><%= alert %></em>
                 <%= yield %>
               </div>
-            </div>
           </div>
         </div>
       </div>
-    </div>
-  </main>
+    </main>
 
   <div>
     <%= render "shared/footer" %>
